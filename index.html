@@ -3,205 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>אוסטאו-ישראל | המרכז הישראלי לאוסטיאופורוזיס</title>
-    <!-- שימוש בפונט מקצועי מגוגל -->
+    <title>אוסטאו-ישראל | פורטל בריאות העצם</title>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;700&family=Heebo:wght@300;500;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1a365d; /* כחול עמוק סמכותי */
-            --accent: #2d9596;  /* טורקיז רפואי מודרני */
+            --primary: #1a365d;
+            --accent: #2d9596;
+            --orange: #d35400;
             --text: #2d3748;
-            --light-bg: #f7fafc;
+            --light-bg: #f9f9f9;
             --white: #ffffff;
         }
 
-        body {
-            font-family: 'Assistant', sans-serif;
-            margin: 0;
-            background-color: var(--light-bg);
-            color: var(--text);
-            line-height: 1.8;
-        }
+        body { font-family: 'Assistant', sans-serif; margin: 0; background-color: var(--light-bg); color: var(--text); line-height: 1.6; }
 
-        /* סרגל ניווט עליון */
-        nav {
-            background: var(--white);
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo {
-            font-family: 'Heebo', sans-serif;
-            font-weight: 800;
-            font-size: 1.5rem;
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .nav-links a {
-            margin-right: 1.5rem;
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
+        /* תפריט עליון מורחב */
+        nav { background: var(--white); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .logo-area { text-align: right; }
+        .logo-area h1 { margin: 0; font-family: 'Heebo', sans-serif; color: var(--primary); font-size: 1.4rem; }
+        .logo-area span { font-size: 0.8rem; color: #718096; }
+        
+        .nav-links { display: flex; gap: 15px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text); font-size: 0.9rem; font-weight: 500; transition: 0.3s; }
         .nav-links a:hover { color: var(--accent); }
+        .btn-contact { background: var(--orange); color: white !important; padding: 8px 20px; border-radius: 8px; }
 
-        /* אזור כותרת מרכזי - Hero */
-        .hero {
-            background: linear-gradient(rgba(26, 54, 93, 0.9), rgba(26, 54, 93, 0.9)), 
-                        url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=2070');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 120px 5%;
-            text-align: center;
+        /* באנר ראשי */
+        .hero-banner { 
+            margin: 20px 5%;
+            height: 300px;
+            background: linear-gradient(90deg, #2d9596 0%, #1a365d 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
+        /* כאן אפשר להוסיף את תמונת השדרה המוארת מהצילום מסך */
 
-        .hero h1 {
-            font-family: 'Heebo', sans-serif;
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            letter-spacing: -1px;
-        }
+        /* סקשן: מצאו את השלב שלכם */
+        .container { max-width: 1200px; margin: auto; padding: 40px 5%; }
+        .section-header { text-align: center; margin-bottom: 40px; }
+        .section-header h2 { color: var(--primary); font-size: 2rem; margin-bottom: 10px; }
+        
+        .step-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .step-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; transition: 0.3s; border: 1px solid #eee; }
+        .step-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+        .step-image { height: 150px; background: #f0f4f8; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+        .step-info { padding: 20px; }
+        .step-info h4 { margin: 0 0 10px; color: var(--primary); }
+        .step-info p { font-size: 0.85rem; color: #718096; margin: 0; }
 
-        .hero p {
-            font-size: 1.4rem;
-            max-width: 800px;
-            margin: 0 auto 2.5rem;
-            font-weight: 300;
-        }
+        /* סקשן: גישת טיפול */
+        .treatment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; }
+        .treat-card { padding: 40px; border-radius: 20px; text-align: center; color: white; transition: 0.3s; cursor: pointer; position: relative; }
+        .treat-natural { background: #00ca72; } /* ירוק מהצילום מסך */
+        .treat-combined { background: #3b82f6; } /* כחול מהצילום מסך */
+        .treat-card:hover { opacity: 0.9; transform: scale(1.02); }
+        .treat-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        .btn-go { background: rgba(255,255,255,0.2); border: 1px solid white; color: white; padding: 10px 30px; border-radius: 5px; margin-top: 20px; display: inline-block; text-decoration: none; }
 
-        .cta-button {
-            background-color: var(--accent);
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: inline-block;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        /* סקציית כרטיסיות תוכן */
-        .features {
-            padding: 80px 5%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: -50px auto 0;
-        }
-
-        .feature-card {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            text-align: center;
-            border-bottom: 4px solid transparent;
-            transition: border-color 0.3s;
-        }
-
-        .feature-card:hover {
-            border-color: var(--accent);
-        }
-
-        .feature-card h3 {
-            color: var(--primary);
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-card p {
-            color: #718096;
-            font-size: 1.05rem;
-        }
-
-        /* סקציית "אודות המרכז" */
-        .about-brief {
-            padding: 80px 5%;
-            max-width: 900px;
-            margin: auto;
-            text-align: center;
-        }
-
-        .about-brief h2 {
-            font-family: 'Heebo', sans-serif;
-            color: var(--primary);
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        footer {
-            background: var(--primary);
-            color: white;
-            padding: 40px 5%;
-            text-align: center;
-            margin-top: 50px;
-        }
+        footer { text-align: center; padding: 40px; color: #a0aec0; font-size: 0.9rem; }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .hero p { font-size: 1.1rem; }
+            .nav-links { display: none; } /* במובייל נצטרך תפריט המבורגר בהמשך */
+            .treatment-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a href="#" class="logo">אוסטאו-ישראל</a>
-        <div class="nav-links">
-            <a href="#">מאמרים</a>
-            <a href="#">שיטת Osteolifting</a>
-            <a href="#">מחקרים</a>
-            <a href="#">צור קשר</a>
-        </div>
-    </nav>
+<nav>
+    <div class="logo-area">
+        <h1>אוסטאו-ישראל</h1>
+        <span>פורטל בריאות העצם</span>
+    </div>
+    <div class="nav-links">
+        <a href="#">ידע</a>
+        <a href="#">אבחון</a>
+        <a href="#">טיפול טבעי</a>
+        <a href="#">טיפול משולב</a>
+        <a href="#">אפשרויות טיפול</a>
+        <a href="#">חיים עם אוסטיאופורוזיס</a>
+        <a href="#">כושר</a>
+        <a href="#">תזונה</a>
+        <a href="#" class="btn-contact">צור קשר</a>
+    </div>
+</nav>
 
-    <section class="hero">
-        <h1>המרכז הישראלי לאוסטיאופורוזיס</h1>
-        <p>מומחים בבנייה וחיזוק מסת העצם בשיטות מבוססות ראיות (Evidence-Based Training). הידע המקצועי ביותר לשמירה על שלד חזק ובריא.</p>
-        <a href="#" class="cta-button">להצטרפות לקהילה המקצועית</a>
-    </section>
+<div class="hero-banner">
+    <h2 style="color: white; font-size: 2.5rem; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">המרכז הישראלי לאוסטיאופורוזיס</h2>
+</div>
 
-    <div class="features">
-        <div class="feature-card">
-            <h3>מדעי העצם</h3>
-            <p>סקירה יומיומית של מחקרים קליניים ומטא-אנליזות מ-PubMed. הנגשת מדע מורכב לכלים יישומיים בחיי היום-יום.</p>
+<div class="container">
+    <div class="section-header">
+        <h2>מצאו את השלב שלכם</h2>
+        <p>כל אדם נמצא במקום אחר בדרך שלו לבריאות עצם טובה יותר. בחרו את השלב שלכם ותקבלו תוכן ותמיכה המותאמים אליכם.</p>
+    </div>
+    
+    <div class="step-grid">
+        <div class="step-card">
+            <div class="step-image">💪</div>
+            <div class="step-info">
+                <h4>רוצה לחזק</h4>
+                <p>תוכניות תרגול, כושר וחיזוק עצם</p>
+            </div>
         </div>
-        <div class="feature-card">
-            <h3>פרוטוקול אימונים</h3>
-            <p>שיטת Osteolifting הייחודית: אימוני התנגדות ופרוטוקולים לחיזוק השלד ומניעת שברים המותאמים לנשים וגברים.</p>
+        <div class="step-card">
+            <div class="step-image">🏥</div>
+            <div class="step-info">
+                <h4>עברתי שבר</h4>
+                <p>שיקום, מניעת שברים נוספים וחיזוק</p>
+            </div>
         </div>
-        <div class="feature-card">
-            <h3>פורטל תזונה</h3>
-            <p>המרכז המקיף בישראל למידע על סידן, ויטמין D, ומגנזיום - כולל המלצות תזונתיות מותאמות אישית לבניית עצם.</p>
+        <div class="step-card">
+            <div class="step-image">📋</div>
+            <div class="step-info">
+                <h4>אובחנתי</h4>
+                <p>אפשרויות טיפול, תרופות ודרך קדימה</p>
+            </div>
+        </div>
+        <div class="step-card">
+            <div class="step-image">🔍</div>
+            <div class="step-info">
+                <h4>בסיכון</h4>
+                <p>בדיקות מניעה, הערכת סיכון וסינון</p>
+            </div>
+        </div>
+        <div class="step-card">
+            <div class="step-image">📚</div>
+            <div class="step-info">
+                <h4>רק רוצה להבין</h4>
+                <p>למדו את היסודות של בריאות העצם</p>
+            </div>
         </div>
     </div>
+</div>
 
-    <section class="about-brief">
-        <h2>פורטל התוכן מס' 1 בארץ לבריאות העצם</h2>
-        <p>אוסטאו-ישראל הוקם במטרה להוות בית לכל מי שמתמודד עם ירידה בצפיפות העצם או מעוניין למנוע אותה. אנו מאמינים שבעזרת שילוב מדויק בין מדע, תזונה ואימון גופני נכון, ניתן לשפר משמעותית את איכות החיים ולחזק את המערכת השלדית בכל גיל.</p>
-    </section>
+<div class="container">
+    <div class="section-header">
+        <h2>בחרו את גישת הטיפול שלכם</h2>
+        <p>שתי דרכים לניהול בריאות עצם - בחרו בגישה שמתאימה לכם.</p>
+    </div>
+    
+    <div class="treatment-grid">
+        <div class="treat-card treat-natural">
+            <div style="font-size: 3rem; margin-bottom: 10px;">🌿</div>
+            <h3>טיפול טבעי ללא תרופות</h3>
+            <p>שיפור בריאות עצם דרך תזונה בריאה ופעילות גופנית.</p>
+            <a href="#" class="btn-go">גלו עוד ←</a>
+        </div>
+        <div class="treat-card treat-combined">
+            <div style="font-size: 3rem; margin-bottom: 10px;">💊</div>
+            <h3>טיפול משולב עם תרופות</h3>
+            <p>שילוב של תרופות יעילות וניהול רפואי מקצועי.</p>
+            <a href="#" class="btn-go">גלו עוד ←</a>
+        </div>
+    </div>
+</div>
 
-    <footer>
-        <p>&copy; 2026 אוסטאו-ישראל - המרכז הישראלי לאוסטיאופורוזיס. כל הזכויות שמורות.</p>
-        <p style="font-size: 0.8rem; opacity: 0.7;">מידע זה הינו לימודי בלבד ואינו מהווה תחליף לייעוץ רפואי.</p>
-    </footer>
+<footer>
+    <p>&copy; 2026 אוסטאו-ישראל. המידע בפורטל הינו לימודי בלבד ואינו מהווה תחליף לייעוץ רפואי.</p>
+</footer>
 
 </body>
 </html>
