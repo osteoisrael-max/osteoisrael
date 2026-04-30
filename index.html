@@ -2,16 +2,111 @@
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>אוסטאו-ישראל | המרכז לאוסטיאופורוזיס</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אוסטאו-ישראל | המרכז הישראלי לאוסטיאופורוזיס</title>
     <style>
-        body { font-family: sans-serif; text-align: center; padding: 50px; background-color: #f4f7f6; color: #333; }
-        h1 { color: #2c3e50; }
-        .coming-soon { font-size: 1.5em; color: #16a085; margin-top: 20px; }
+        :root { 
+            --primary: #2c3e50; 
+            --accent: #16a085; 
+            --light: #f4f7f6; 
+            --white: #ffffff;
+        }
+        
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            background: var(--light); 
+            color: #333; 
+            line-height: 1.6; 
+        }
+        
+        header { 
+            background: var(--white); 
+            padding: 1.5rem; 
+            text-align: center; 
+            border-bottom: 4px solid var(--accent);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .hero { 
+            padding: 5rem 2rem; 
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); 
+            color: white; 
+            text-align: center; 
+        }
+        
+        .hero h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.2rem; max-width: 800px; margin: 0 auto 2rem; opacity: 0.9; }
+
+        .container { max-width: 1100px; margin: auto; padding: 3rem 1.5rem; }
+        
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 2rem; 
+        }
+        
+        .card { 
+            background: var(--white); 
+            padding: 2rem; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
+            transition: transform 0.3s ease;
+            border-top: 5px solid var(--accent);
+        }
+        
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { color: var(--primary); margin-top: 0; }
+        
+        .btn { 
+            background: var(--accent); 
+            color: white; 
+            padding: 1rem 2.5rem; 
+            text-decoration: none; 
+            border-radius: 50px; 
+            display: inline-block; 
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover { background: #12876f; }
+        
+        footer { text-align: center; padding: 2rem; color: #7f8c8d; font-size: 0.9rem; }
     </style>
 </head>
 <body>
-    <h1>אוסטאו-ישראל</h1>
-    <p>המרכז הישראלי לאוסטיאופורוזיס: מומחים בבניה וחיזוק מסת העצם</p>
-    <div class="coming-soon">הפורטל בבנייה - בקרוב נשיק את המרכז המקיף ביותר בישראל</div>
+
+    <header>
+        <h1>אוסטאו-ישראל</h1>
+        <p>המרכז הישראלי לאוסטיאופורוזיס</p>
+    </header>
+
+    <section class="hero">
+        <h2>מומחים בבנייה וחיזוק מסת העצם</h2>
+        <p>פורטל התוכן המקיף בישראל לבריאות העצם, המשלב ידע מדעי עדכני עם שיטות תרגול מוכחות לשיפור צפיפות העצם.</p>
+        <a href="#" class="btn">למאגר המאמרים והמחקרים</a>
+    </section>
+
+    <div class="container">
+        <div class="grid">
+            <div class="card">
+                <h3>מדעי העצם</h3>
+                <p>סקירות של מחקרים קליניים ומטא-אנליזות מ-PubMed בנושאי פיזיולוגיה של השלד ואוסטיאופורוזיס.</p>
+            </div>
+            <div class="card">
+                <h3>שיטת Osteolifting</h3>
+                <p>פרוטוקולים מבוססי ראיות לאימוני התנגדות ואימון גופני ייעודי לחיזוק העצמות ומניעת שברים.</p>
+            </div>
+            <div class="card">
+                <h3>תזונה ובריאות</h3>
+                <p>מדריכים על צריכת סידן, ויטמין D, מגנזיום ומינרלים חיוניים לבריאות העצם לאורך השנים.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 אוסטאו-ישראל - המרכז הישראלי לאוסטיאופורוזיס. כל הזכויות שמורות.
+    </footer>
+
 </body>
 </html>
