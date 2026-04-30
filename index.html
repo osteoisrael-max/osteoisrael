@@ -4,108 +4,203 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>אוסטאו-ישראל | המרכז הישראלי לאוסטיאופורוזיס</title>
+    <!-- שימוש בפונט מקצועי מגוגל -->
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;700&family=Heebo:wght@300;500;800&display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --primary: #2c3e50; 
-            --accent: #16a085; 
-            --light: #f4f7f6; 
+        :root {
+            --primary: #1a365d; /* כחול עמוק סמכותי */
+            --accent: #2d9596;  /* טורקיז רפואי מודרני */
+            --text: #2d3748;
+            --light-bg: #f7fafc;
             --white: #ffffff;
         }
-        
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            margin: 0; 
-            background: var(--light); 
-            color: #333; 
-            line-height: 1.6; 
-        }
-        
-        header { 
-            background: var(--white); 
-            padding: 1.5rem; 
-            text-align: center; 
-            border-bottom: 4px solid var(--accent);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        
-        .hero { 
-            padding: 5rem 2rem; 
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); 
-            color: white; 
-            text-align: center; 
-        }
-        
-        .hero h2 { font-size: 2.5rem; margin-bottom: 1rem; }
-        .hero p { font-size: 1.2rem; max-width: 800px; margin: 0 auto 2rem; opacity: 0.9; }
 
-        .container { max-width: 1100px; margin: auto; padding: 3rem 1.5rem; }
-        
-        .grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 2rem; 
+        body {
+            font-family: 'Assistant', sans-serif;
+            margin: 0;
+            background-color: var(--light-bg);
+            color: var(--text);
+            line-height: 1.8;
         }
-        
-        .card { 
-            background: var(--white); 
-            padding: 2rem; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
-            transition: transform 0.3s ease;
-            border-top: 5px solid var(--accent);
+
+        /* סרגל ניווט עליון */
+        nav {
+            background: var(--white);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-        
-        .card:hover { transform: translateY(-5px); }
-        .card h3 { color: var(--primary); margin-top: 0; }
-        
-        .btn { 
-            background: var(--accent); 
-            color: white; 
-            padding: 1rem 2.5rem; 
-            text-decoration: none; 
-            border-radius: 50px; 
-            display: inline-block; 
-            font-weight: bold;
-            transition: background 0.3s;
+
+        .logo {
+            font-family: 'Heebo', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
         }
-        
-        .btn:hover { background: #12876f; }
-        
-        footer { text-align: center; padding: 2rem; color: #7f8c8d; font-size: 0.9rem; }
+
+        .nav-links a {
+            margin-right: 1.5rem;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+
+        /* אזור כותרת מרכזי - Hero */
+        .hero {
+            background: linear-gradient(rgba(26, 54, 93, 0.9), rgba(26, 54, 93, 0.9)), 
+                        url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=2070');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 5%;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Heebo', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            background-color: var(--accent);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* סקציית כרטיסיות תוכן */
+        .features {
+            padding: 80px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: -50px auto 0;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
+            border-bottom: 4px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent);
+        }
+
+        .feature-card h3 {
+            color: var(--primary);
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: #718096;
+            font-size: 1.05rem;
+        }
+
+        /* סקציית "אודות המרכז" */
+        .about-brief {
+            padding: 80px 5%;
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .about-brief h2 {
+            font-family: 'Heebo', sans-serif;
+            color: var(--primary);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 40px 5%;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1.1rem; }
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>אוסטאו-ישראל</h1>
-        <p>המרכז הישראלי לאוסטיאופורוזיס</p>
-    </header>
+    <nav>
+        <a href="#" class="logo">אוסטאו-ישראל</a>
+        <div class="nav-links">
+            <a href="#">מאמרים</a>
+            <a href="#">שיטת Osteolifting</a>
+            <a href="#">מחקרים</a>
+            <a href="#">צור קשר</a>
+        </div>
+    </nav>
 
     <section class="hero">
-        <h2>מומחים בבנייה וחיזוק מסת העצם</h2>
-        <p>פורטל התוכן המקיף בישראל לבריאות העצם, המשלב ידע מדעי עדכני עם שיטות תרגול מוכחות לשיפור צפיפות העצם.</p>
-        <a href="#" class="btn">למאגר המאמרים והמחקרים</a>
+        <h1>המרכז הישראלי לאוסטיאופורוזיס</h1>
+        <p>מומחים בבנייה וחיזוק מסת העצם בשיטות מבוססות ראיות (Evidence-Based Training). הידע המקצועי ביותר לשמירה על שלד חזק ובריא.</p>
+        <a href="#" class="cta-button">להצטרפות לקהילה המקצועית</a>
     </section>
 
-    <div class="container">
-        <div class="grid">
-            <div class="card">
-                <h3>מדעי העצם</h3>
-                <p>סקירות של מחקרים קליניים ומטא-אנליזות מ-PubMed בנושאי פיזיולוגיה של השלד ואוסטיאופורוזיס.</p>
-            </div>
-            <div class="card">
-                <h3>שיטת Osteolifting</h3>
-                <p>פרוטוקולים מבוססי ראיות לאימוני התנגדות ואימון גופני ייעודי לחיזוק העצמות ומניעת שברים.</p>
-            </div>
-            <div class="card">
-                <h3>תזונה ובריאות</h3>
-                <p>מדריכים על צריכת סידן, ויטמין D, מגנזיום ומינרלים חיוניים לבריאות העצם לאורך השנים.</p>
-            </div>
+    <div class="features">
+        <div class="feature-card">
+            <h3>מדעי העצם</h3>
+            <p>סקירה יומיומית של מחקרים קליניים ומטא-אנליזות מ-PubMed. הנגשת מדע מורכב לכלים יישומיים בחיי היום-יום.</p>
+        </div>
+        <div class="feature-card">
+            <h3>פרוטוקול אימונים</h3>
+            <p>שיטת Osteolifting הייחודית: אימוני התנגדות ופרוטוקולים לחיזוק השלד ומניעת שברים המותאמים לנשים וגברים.</p>
+        </div>
+        <div class="feature-card">
+            <h3>פורטל תזונה</h3>
+            <p>המרכז המקיף בישראל למידע על סידן, ויטמין D, ומגנזיום - כולל המלצות תזונתיות מותאמות אישית לבניית עצם.</p>
         </div>
     </div>
 
+    <section class="about-brief">
+        <h2>פורטל התוכן מס' 1 בארץ לבריאות העצם</h2>
+        <p>אוסטאו-ישראל הוקם במטרה להוות בית לכל מי שמתמודד עם ירידה בצפיפות העצם או מעוניין למנוע אותה. אנו מאמינים שבעזרת שילוב מדויק בין מדע, תזונה ואימון גופני נכון, ניתן לשפר משמעותית את איכות החיים ולחזק את המערכת השלדית בכל גיל.</p>
+    </section>
+
     <footer>
-        &copy; 2026 אוסטאו-ישראל - המרכז הישראלי לאוסטיאופורוזיס. כל הזכויות שמורות.
+        <p>&copy; 2026 אוסטאו-ישראל - המרכז הישראלי לאוסטיאופורוזיס. כל הזכויות שמורות.</p>
+        <p style="font-size: 0.8rem; opacity: 0.7;">מידע זה הינו לימודי בלבד ואינו מהווה תחליף לייעוץ רפואי.</p>
     </footer>
 
 </body>
