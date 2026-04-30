@@ -7,74 +7,115 @@
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;700&family=Heebo:wght@300;500;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1a365d;
-            --accent: #2d9596;
-            --orange: #d35400;
-            --bg: #f4f7f9;
+            --primary: #3b115e; /* סגול עמוק */
+            --accent: #d4af37;  /* זהב */
+            --accent-light: #f1e4bc; /* זהב בהיר לרקעים */
+            --text: #2d3748;
+            --light-bg: #fdfdfd;
             --white: #ffffff;
-            --shadow: 0 10px 25px rgba(0,0,0,0.05);
+            --shadow: 0 10px 30px rgba(59, 17, 94, 0.1);
         }
 
-        body { font-family: 'Assistant', sans-serif; margin: 0; background-color: var(--bg); color: #333; line-height: 1.6; scroll-behavior: smooth; }
+        body { 
+            font-family: 'Assistant', sans-serif; 
+            margin: 0; 
+            background-color: var(--light-bg); 
+            color: var(--text); 
+            line-height: 1.6; 
+            scroll-behavior: smooth;
+        }
+
+        /* ניווט */
+        nav { 
+            background: var(--white); 
+            padding: 1rem 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            box-shadow: var(--shadow); 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            border-bottom: 3px solid var(--accent);
+        }
+        .logo-area h1 { margin: 0; font-family: 'Heebo', sans-serif; color: var(--primary); font-size: 1.6rem; font-weight: 800; }
+        .logo-area span { font-size: 0.85rem; color: var(--accent); font-weight: 700; }
         
-        /* תפריט ניווט */
-        nav { background: var(--white); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow); position: sticky; top: 0; z-index: 1000; }
-        .logo-area h1 { margin: 0; font-family: 'Heebo', sans-serif; color: var(--primary); font-size: 1.4rem; }
-        .nav-links { display: flex; gap: 15px; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--primary); font-size: 0.9rem; font-weight: 600; transition: 0.3s; }
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--primary); font-size: 0.95rem; font-weight: 600; transition: 0.3s; }
         .nav-links a:hover { color: var(--accent); }
-        .btn-contact { background: var(--orange); color: white !important; padding: 8px 18px; border-radius: 6px; }
+        .btn-contact-nav { background: var(--primary); color: var(--accent) !important; padding: 10px 22px; border-radius: 5px; border: 1px solid var(--accent); }
+        .btn-contact-nav:hover { background: var(--accent); color: var(--primary) !important; }
 
         /* באנר ראשי */
         .hero { 
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            padding: 80px 5%;
+            background: linear-gradient(135deg, var(--primary) 0%, #1a082e 100%);
+            padding: 100px 5%;
             color: white;
             text-align: center;
+            border-radius: 0 0 80px 80px;
+            position: relative;
         }
-        .hero h2 { font-size: 3rem; margin-bottom: 20px; font-family: 'Heebo', sans-serif; }
+        .hero::after { content: ""; position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); width: 100px; height: 4px; background: var(--accent); border-radius: 2px; }
+        .hero h2 { font-size: 3.2rem; margin-bottom: 20px; font-family: 'Heebo', sans-serif; color: var(--accent); }
 
-        .container { max-width: 1200px; margin: auto; padding: 60px 5%; }
-        .section-title { text-align: center; margin-bottom: 50px; }
-        .section-title h2 { color: var(--primary); font-size: 2.2rem; margin-bottom: 15px; font-family: 'Heebo', sans-serif; }
-        
+        .container { max-width: 1200px; margin: auto; padding: 80px 5%; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { color: var(--primary); font-size: 2.5rem; margin-bottom: 15px; font-family: 'Heebo', sans-serif; position: relative; display: inline-block; }
+        .section-header h2::bottom { border-bottom: 3px solid var(--accent); }
+
         /* גריד כרטיסיות */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
         .card { 
             background: var(--white); 
-            padding: 25px; 
-            border-radius: 15px; 
+            padding: 40px 30px; 
+            border-radius: 25px; 
             box-shadow: var(--shadow); 
-            transition: 0.3s; 
+            transition: 0.4s; 
             text-align: center;
-            border: 1px solid transparent;
+            border: 1px solid rgba(212, 175, 55, 0.1);
             display: flex;
             flex-direction: column;
+            height: 100%;
         }
-        .card:hover { transform: translateY(-5px); border-color: var(--accent); }
-        .icon { font-size: 2.5rem; margin-bottom: 15px; }
-        .card h3 { color: var(--primary); margin: 10px 0; font-size: 1.25rem; }
-        .card p { font-size: 0.9rem; color: #666; flex-grow: 1; }
-        .card-link { color: var(--accent); font-weight: bold; text-decoration: none; margin-top: 15px; display: block; }
+        .card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(59, 17, 94, 0.15); }
+        .icon-box { font-size: 3.5rem; margin-bottom: 20px; display: block; }
+        .icon-circle { width: 70px; height: 70px; background: var(--accent-light); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 25px; color: var(--primary); }
+        .card h4 { color: var(--primary); margin-bottom: 15px; font-size: 1.4rem; font-family: 'Heebo', sans-serif; }
+        .card p { font-size: 1rem; color: #555; flex-grow: 1; }
+        .card-link { color: var(--primary); font-weight: 800; text-decoration: none; margin-top: 25px; display: block; border-bottom: 2px solid var(--accent); align-self: center; }
 
-        /* סקשן גישות טיפול */
-        .treatment-split { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
-        .treat-box { padding: 40px; border-radius: 20px; color: white; text-align: center; text-decoration: none; transition: 0.3s; }
-        .natural { background: #00ca72; }
-        .medical { background: #3b82f6; }
-        .treat-box:hover { opacity: 0.9; transform: scale(1.02); }
+        /* גישות טיפול */
+        .treatment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 50px; }
+        .treat-card { padding: 60px 40px; border-radius: 30px; text-align: center; color: white; transition: 0.3s; text-decoration: none; border: 2px solid transparent; }
+        .treat-natural { background: var(--primary); border-color: var(--accent); }
+        .treat-combined { background: #250b3d; border-color: var(--accent); }
+        .treat-card:hover { transform: scale(1.03); box-shadow: 0 15px 40px rgba(0,0,0,0.2); }
+        .treat-card h3 { color: var(--accent); font-size: 1.8rem; margin-bottom: 15px; }
+        .btn-go { background: var(--accent); color: var(--primary); padding: 12px 35px; border-radius: 8px; margin-top: 30px; display: inline-block; font-weight: 700; }
 
-        /* סקשן זכויות - בולט */
-        .rights-highlight { background: var(--primary); color: white; padding: 50px; border-radius: 25px; text-align: center; margin: 40px 0; }
-        .rights-highlight h2 { color: #a3e635; margin-bottom: 20px; }
+        /* סקשן זכויות */
+        .rights-highlight { 
+            background: linear-gradient(135deg, var(--primary) 0%, #250b3d 100%);
+            color: white; 
+            padding: 80px 40px; 
+            border-radius: 50px; 
+            text-align: center; 
+            margin: 60px 0; 
+            border: 2px solid var(--accent);
+        }
+        .rights-highlight h2 { color: var(--accent); margin-bottom: 25px; font-size: 2.8rem; }
+        .btn-white { background: var(--accent); color: var(--primary); padding: 15px 45px; border-radius: 10px; text-decoration: none; font-weight: 800; display: inline-block; font-size: 1.1rem; }
 
-        footer { background: #1a202c; color: #cbd5e0; padding: 60px 5% 20px; text-align: right; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
-        
+        /* פוטר */
+        footer { background: #12051d; color: #bca0dc; padding: 80px 5% 40px; border-top: 5px solid var(--accent); }
+        .footer-col h4 { color: var(--accent); margin-bottom: 25px; font-size: 1.3rem; }
+        .footer-col li { margin-bottom: 15px; border-bottom: 1px solid rgba(212, 175, 55, 0.1); padding-bottom: 5px; }
+
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .treatment-split { grid-template-columns: 1fr; }
-            .hero h2 { font-size: 2rem; }
+            .treatment-grid { grid-template-columns: 1fr; }
+            .hero h2 { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -83,169 +124,127 @@
 <nav>
     <div class="logo-area">
         <h1>אוסטאו-ישראל</h1>
-        <span style="font-size: 0.8rem; color: #718096;">פורטל בריאות העצם של ישראל</span>
+        <span>הפורטל הלאומי לבריאות העצם</span>
     </div>
     <div class="nav-links">
         <a href="#steps">השלב שלי</a>
+        <a href="#treatment">גישות טיפול</a>
         <a href="#tools">מחשבונים</a>
-        <a href="#experts">מומחים</a>
-        <a href="#knowledge">מאגר ידע</a>
-        <a href="#" class="btn-contact">צור קשר</a>
+        <a href="#rights">זכויות</a>
+        <a href="#" class="btn-contact-nav">התייעצות אישית</a>
     </div>
 </nav>
 
 <section class="hero">
-    <h2>הדור הבא של בריאות העצם בישראל</h2>
-    <p style="font-size: 1.2rem; max-width: 800px; margin: auto;">שילוב ייחודי של סמכות רפואית, כלים טכנולוגיים ותוכניות אימון מותאמות אישית.</p>
+    <h2>המרכז הישראלי לאוסטיאופורוזיס</h2>
+    <p style="font-size: 1.3rem; max-width: 850px; margin: auto; opacity: 0.9;">מצוינות מחקרית, ליווי מקצועי וטכנולוגיה מתקדמת לשמירה על חוסן השלד שלך.</p>
 </section>
 
-<!-- סקשן 1: מצאו את השלב שלכם (פילוח משתמשים) -->
+<!-- סקשן צעדים -->
 <section class="container" id="steps">
-    <div class="section-title">
+    <div class="section-header">
         <h2>מצאו את השלב שלכם</h2>
-        <p>בחרו את המסלול המתאים למצבכם הנוכחי לקבלת המלצות מותאמות</p>
+        <p>ליווי מותאם אישית לכל שלב במסע לבריאות העצם</p>
     </div>
     <div class="grid">
         <div class="card">
-            <div class="icon">💪</div>
-            <h3>רוצה לחזק</h3>
-            <p>תוכניות תרגול למניעה ושיפור צפיפות העצם</p>
-            <a href="#" class="card-link">לתוכניות האימון ←</a>
+            <span class="icon-box">💪</span>
+            <h4>רוצה לחזק</h4>
+            <p>תוכניות תרגול מתקדמות לשיפור צפיפות העצם ומניעה.</p>
+            <a href="#" class="card-link">לתוכנית החיזוק ←</a>
         </div>
         <div class="card">
-            <div class="icon">🏥</div>
-            <h3>עברתי שבר</h3>
-            <p>מדריכי שיקום ומניעת שברים חוזרים</p>
+            <span class="icon-box">🏥</span>
+            <h4>עברתי שבר</h4>
+            <p>פרוטוקול שיקום בטוח ומניעת הישנות שברים.</p>
             <a href="#" class="card-link">למדריך השיקום ←</a>
         </div>
         <div class="card">
-            <div class="icon">📋</div>
-            <h3>אובחנתי</h3>
-            <p>צעדים ראשונים לאחר אבחנה באוסטיאופורוזיס</p>
-            <a href="#" class="card-link">מה עושים עכשיו? ←</a>
-        </div>
-        <div class="card">
-            <div class="icon">🔍</div>
-            <h3>בסיכון</h3>
-            <p>כלי הערכה עצמית ובדיקות סקר מומלצות</p>
-            <a href="#" class="card-link">בדיקת סיכונים ←</a>
+            <span class="icon-box">📋</span>
+            <h4>אובחנתי</h4>
+            <p>הבנת האבחנה ובניית תוכנית פעולה רפואית וגופנית.</p>
+            <a href="#" class="card-link">צעדים ראשונים ←</a>
         </div>
     </div>
 </section>
 
-<!-- סקשן 2: מחשבונים ובדיקות (הכלים הפרקטיים) -->
-<section class="container" id="tools" style="background: rgba(45, 149, 150, 0.05); border-radius: 50px;">
-    <div class="section-title">
-        <h2>כלים ומחשבונים לאבחון מהיר</h2>
-        <p>טכנולוגיה בשירות הבריאות שלך - נתונים שהופכים לתובנות</p>
+<!-- גישות טיפול -->
+<section class="container" id="treatment">
+    <div class="treatment-grid">
+        <a href="#" class="treat-card treat-natural">
+            <div style="font-size: 4rem; margin-bottom: 20px;">🌿</div>
+            <h3>גישת החיזוק הטבעי</h3>
+            <p>התמקדות בתזונה בונה עצם, תוספי איכות ופעילות גופנית עצימה בשיטת Osteolifting.</p>
+            <span class="btn-go">למידע נוסף</span>
+        </a>
+        <a href="#" class="treat-card treat-combined">
+            <div style="font-size: 4rem; margin-bottom: 20px;">💊</div>
+            <h3>הגישה הרפואית המשולבת</h3>
+            <p>ניהול תרופתי מבוסס מחקר בשילוב מעטפת מקצועית של אורח חיים תומך.</p>
+            <span class="btn-go">למידע נוסף</span>
+        </a>
+    </div>
+</section>
+
+<!-- מחשבונים -->
+<section class="container" id="tools">
+    <div class="section-header">
+        <h2>מחשבונים וכלים אבחוניים</h2>
     </div>
     <div class="grid">
         <div class="card">
-            <div class="icon">📊</div>
-            <h3>מחשבון DEXA</h3>
-            <p>פענוח אוטומטי של תוצאות צפיפות עצם והשוואה לנורמה</p>
-            <a href="#" class="card-link">הזנת נתונים ←</a>
+            <div class="icon-circle">📊</div>
+            <h3>פענוח DEXA</h3>
+            <p>ניתוח אוטומטי של תוצאות בדיקת צפיפות העצם שלך.</p>
+            <a href="#" class="card-link">התחילי פענוח ←</a>
         </div>
         <div class="card">
-            <div class="icon">🍎</div>
-            <h3>בירור תזונתי</h3>
-            <p>בדיקת צריכת סידן יומית ומדדי ויטמין D</p>
-            <a href="#" class="card-link">למחשבון התזונה ←</a>
+            <div class="icon-circle">🥗</div>
+            <h3>מחשבון סידן</h3>
+            <p>בדיקה מהירה של צריכת הסידן היומית מהתזונה.</p>
+            <a href="#" class="card-link">לבדיקה מהירה ←</a>
         </div>
         <div class="card">
-            <div class="icon">📈</div>
-            <h3>מעקב אימונים</h3>
-            <p>ניתוח עומס מכני בתוכניות הכוח (BodyMass)</p>
-            <a href="#" class="card-link">בדיקת עומסים ←</a>
+            <div class="icon-circle">⚡</div>
+            <h3>מדד עומס אימון</h3>
+            <p>ניתוח אפקטיביות האימונים שלך לפי שיטת BodyMass.</p>
+            <a href="#" class="card-link">בדיקת אימון ←</a>
         </div>
     </div>
 </section>
 
-<!-- סקשן 3: גישות טיפול -->
-<section class="container">
-    <div class="section-title">
-        <h2>בחרו את גישת הטיפול</h2>
-        <p>שתי דרכים משלימות לניהול המחלה - בחרו את המתאימה לכם</p>
-    </div>
-    <div class="treatment-split">
-        <a href="#" class="treat-box natural">
-            <div class="icon" style="color: white;">🌿</div>
-            <h3>טיפול טבעי וחיזוק</h3>
-            <p>תזונה, תוספים ממוקדים ופעילות גופנית בונה עצם</p>
-            <span class="card-link" style="color: white;">גלו עוד ←</span>
-        </a>
-        <a href="#" class="treat-box medical">
-            <div class="icon" style="color: white;">💊</div>
-            <h3>טיפול רפואי משולב</h3>
-            <p>ניהול תרופתי מקצועי בשילוב אורח חיים תומך</p>
-            <span class="card-link" style="color: white;">גלו עוד ←</span>
-        </a>
-    </div>
-</section>
-
-<!-- סקשן 4: זכויות (הערך המוסף) -->
-<section class="container">
+<!-- זכויות -->
+<section class="container" id="rights">
     <div class="rights-highlight">
-        <h2>מרכז הזכויות: מה מגיע לך?</h2>
-        <p style="font-size: 1.1rem; max-width: 700px; margin: 0 auto 25px;">מידע מקיף על סל הבריאות, השתתפות עצמית בבדיקות DEXA, סבסוד תרופות וזכויות בקופות החולים השונות.</p>
-        <a href="#" class="btn-contact" style="background: #a3e635; color: var(--primary) !important; font-weight: bold;">למדריך הזכויות המלא</a>
-    </div>
-</section>
-
-<!-- סקשן 5: ספריית מומחים ומאגר ידע (הסמכות) -->
-<section class="container" id="experts">
-    <div class="section-title">
-        <h2>ספריה מקצועית ומאגר ידע</h2>
-        <p>כל מה שצריך לדעת - מפיזיולוגיה ועד מחקרים אחרונים</p>
-    </div>
-    <div class="grid">
-        <div class="card">
-            <div class="icon">👨‍⚕️</div>
-            <h3>ספריית מומחים</h3>
-            <p>איתור רופאים, תזונאים ומאמנים המתמחים בעצם</p>
-            <a href="#" class="card-link">לרשימה המלאה ←</a>
-        </div>
-        <div class="card">
-            <div class="icon">🔬</div>
-            <h3>מחקרים וחדשות</h3>
-            <p>עדכונים שוטפים מ-PubMed על שיטות טיפול חדשות</p>
-            <a href="#" class="card-link">לקריאת המחקרים ←</a>
-        </div>
-        <div class="card">
-            <div class="icon">🎓</div>
-            <h3>היבטים פיזיולוגיים</h3>
-            <p>לימוד מעמיק על תהליכי פירוק ובניית עצם</p>
-            <a href="#" class="card-link">למאגר הידע ←</a>
-        </div>
-        <div class="card">
-            <div class="icon">💳</div>
-            <h3>שירותי פרימיום</h3>
-            <p>ייעוץ אישי, תוכנית Osteolifting וליווי מקצועי</p>
-            <a href="#" class="card-link">לשירותי המרכז ←</a>
-        </div>
+        <h2>הזכויות שלך בקופת החולים</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">מידע מרוכז על סבסוד תרופות, בדיקות צפיפות עצם וזכאות לפיזיותרפיה ושיקום.</p>
+        <a href="#" class="btn-white">צפי במדריך הזכויות 2026</a>
     </div>
 </section>
 
 <footer>
-    <div class="footer-grid container">
+    <div class="container footer-grid">
         <div class="footer-col">
-            <h3 style="color: white;">אוסטאו-ישראל</h3>
-            <p>פורטל התוכן המוביל בישראל לאוסטיאופורוזיס ובריאות העצם.</p>
+            <h4>אוסטאו-ישראל</h4>
+            <p>פורטל התוכן והאבחון המוביל בישראל לבריאות העצם. מבוסס על מתודולוגיות Evidence-Based.</p>
         </div>
         <div class="footer-col">
-            <h4>קישורים מהירים</h4>
-            <p>מחשבון DEXA</p>
-            <p>זכויות החולה</p>
-            <p>תוכנית BodyMass</p>
+            <h4>ניווט מהיר</h4>
+            <ul style="list-style: none; padding: 0;">
+                <li>מחשבוני DEXA</li>
+                <li>זכויות החולה</li>
+                <li>אימוני Osteolifting</li>
+                <li>מחקרים אחרונים</li>
+            </ul>
         </div>
         <div class="footer-col">
-            <h4>צור קשר</h4>
+            <h4>יצירת קשר</h4>
             <p>אימייל: info@osteoliftingpro.com</p>
-            <p>טלפון: 03-XXXXXXX</p>
+            <p>טלפון: 054-XXXXXXX</p>
         </div>
     </div>
-    <div style="text-align: center; margin-top: 40px; border-top: 1px solid #2d3748; padding-top: 20px;">
-        <p>&copy; 2026 אוסטאו-ישראל. כל הזכויות שמורות. המידע בפורטל הינו לימודי ואינו מהווה תחליף לייעוץ רפואי.</p>
+    <div style="text-align: center; margin-top: 50px; opacity: 0.6; font-size: 0.9rem;">
+        <p>&copy; 2026 אוסטאו-ישראל. כל הזכויות שמורות. המידע אינו מהווה תחליף לייעוץ רפואי.</p>
     </div>
 </footer>
 
